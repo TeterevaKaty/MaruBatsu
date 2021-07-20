@@ -1,7 +1,7 @@
-var gameArea = document.getElementById('game_area');
+const gameArea = document.getElementById('game_area');
 let turn = 0;
-var result ='';
-var arrWin =  [
+let result ='';
+const arrWin =  [
     [0,1,2],
     [3,4,5],
     [6,7,8],
@@ -10,20 +10,21 @@ var arrWin =  [
     [2,5,8],
     [0,4,8],
     [2,4,6]
-]
+];
 
 gameArea.addEventListener('click', e => {
     if(e.target.innerHTML != '×' && e.target.innerHTML != '○'){
-        if(e.target.className = 'cell'){
+        if(e.target.className == 'cell'){
             turn % 2 === 0 ? e.target.innerHTML  = '×' : e.target.innerHTML = '○';
             turn++;
         }
         isWinner();
     }
-})
+});
 
 function isWinner(){
-    var cells = document.getElementsByClassName('cell');
+    const cells = document.getElementsByClassName('cell');
+    
     if(result !='×' && result != '○'){
         for(let i = 0; i < arrWin.length; i++){
             if (cells[arrWin[i][0]].innerHTML == '×' && cells[arrWin[i][1]].innerHTML =='×' && cells[arrWin[i][2]].innerHTML =='×'){
